@@ -1,0 +1,64 @@
+body {
+    background-color: #f4f4f4;
+    color: #000;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    height: 100vh;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.jumbotron {
+    padding: 3rem;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.jumbotron h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.jumbotron p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.btn-primary {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    font-weight: bold;
+    font-size: 1.2rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    box-shadow: 0 5px 0 #000;
+}
+
+.btn-primary:hover {
+    background-color: #000;
+    color: #fff;
+    box-shadow: none;
+    border: 2px solid #fff;
+}
+
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 2rem;
+    margin-top: auto;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+.footer p {
+    font-weight: bold;
+    font-size: 1rem;
+}
