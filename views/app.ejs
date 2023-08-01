@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Reader</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:300,700&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .content {
+            flex: 1 0 auto;
+            overflow: auto; /* Add this line */
+        }
+        .footer {
+            flex-shrink: 0;
+        }
+        .loading-icon {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="jumbotron content">
+    <div class="container">
+        <h1>Document Reader</h1>
+        <p>Ask questions about your documents.</p>
+        <div class="row">
+            <div class="col-md-6">
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <label for="file">Upload a document:</label><br /><br />
+                    <input type="file" id="file" name="file" accept=".pdf,.docx,.pptx,.xlsx,.csv"><br />
+                    <br />
+                    <input type="submit" value="Upload" class="btn btn-primary">
+                </form>
+            </div>
+            <div class="col-md-6">
+                <form action="/ask" method="POST" id="questionForm">
+                    <label for="documentName">Select a document:</label><br>
+                    <select id="documentName" name="documentName" class="form-control">
+                        <% documents.forEach(function(document) { %>
+                            <option value="<%= document %>"><%= document %></option>
+                        <% }); %>
+                    </select><br>
+                    <label for="question">What do you want to know?</label><br>
+                    <input type="text" id="question" name="question" class="form-control"><br>
+                    <input type="submit" value="Ask" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+        <br>
+        <div class="loading-icon">
+            <img src="loading.gif" width="40" height="40" alt="Loading...">
+        </div>
+        <% if (typeof answer !== 'undefined') { %>
+            <p><%= answer %></p>
+        <% } %>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2023 Document Reader. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById('questionForm').addEventListener('submit', function() {
+        document.querySelector('.loading-icon').style.display = 'block';
+    });
+</script>
+</body>
+</html>
